@@ -16,10 +16,10 @@
     --c-bg-secondary: #F7F5F0;
     --c-border-light: #E8E5DF;
 
-    --dur-short: 0.2s;
-    --dur-medium: 0.4s;
-    --dur-long: 0.8s;
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-short: 0.3s;
+    --dur-medium: 0.6s;
+    --dur-long: 1s;
+    --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     
     --transition-smooth: all var(--dur-medium) var(--ease-out-expo);
     --transition-slow: all var(--dur-long) var(--ease-out-expo);
@@ -28,6 +28,17 @@
 html { scroll-behavior: smooth; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Textura Global Noise */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    z-index: 9999;
+    pointer-events: none;
+}
 
 body { 
     font-family: var(--font-secondary); 
@@ -186,9 +197,10 @@ body {
 .btn-primary { background: transparent; color: var(--c-text-invert); border: 1px solid var(--c-brand-dark); z-index: 1; }
 .btn-primary::after { content: ''; position: absolute; inset: 0; background: var(--c-brand-dark); z-index: -2; transition: border-color var(--dur-medium); }
 .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--c-brand-accent); transform: translateX(-101%); transition: transform var(--dur-medium) var(--ease-out-expo); z-index: -1; transform-origin: left; }
-.btn-primary:hover { border-color: var(--c-brand-accent); }
+.btn-primary:hover { border-color: var(--c-brand-accent); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 30px rgba(26,26,26,0.1); }
 .btn-primary:hover::before { transform: translateX(0); }
-.btn-ghost { background: transparent; color: var(--c-brand-dark); border: 1px solid transparent; padding: 16px 24px; }
+.btn-ghost { background: transparent; color: var(--c-brand-dark); border: 1px solid transparent; padding: 16px 24px; transition: var(--transition-smooth); }
+.btn-ghost:hover { transform: translateY(-2px); }
 .btn-ghost::after {
     content: ''; position: absolute; bottom: 12px; left: 24px; right: 24px; height: 1px;
     background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform var(--dur-medium) ease;
@@ -351,7 +363,7 @@ body {
 .display-heading { font-family: var(--font-primary); font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.1; color: var(--c-brand-dark); margin-bottom: 24px; font-weight: 500; }
 .display-heading span { font-style: italic; color: var(--c-brand-accent); }
 /* === INSTAGRAM STYLE SLIDER === */
-.insta-slider-container { width: 100%; position: relative; padding: 60px 0; }
+.insta-slider-container { width: 100%; position: relative; padding: 60px 0; -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
 .insta-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 40px; padding: 40px 10vw; -ms-overflow-style: none; scrollbar-width: none; }
 .insta-slider::-webkit-scrollbar { display: none; }
 
@@ -466,7 +478,7 @@ body {
 .manifesto-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 40px 80px rgba(26,26,26,0.06); }
 .visual-accent-line { position: absolute; top: -40px; right: -40px; width: 80px; height: 80px; border-top: 2px solid var(--c-brand-accent); border-right: 2px solid var(--c-brand-accent); }
 
-.floating-quote { position: absolute; bottom: 40px; left: -80px; background: var(--c-bg-primary); padding: 32px; width: 320px; font-family: var(--font-primary); font-size: 1.25rem; font-style: italic; color: var(--c-brand-dark); box-shadow: 0 16px 40px rgba(26,26,26,0.05); border-left: 2px solid var(--c-brand-accent); }
+.floating-quote { position: absolute; bottom: 40px; left: -80px; background: rgba(253, 253, 251, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 32px; width: 320px; font-family: var(--font-primary); font-size: 1.25rem; font-style: italic; color: var(--c-brand-dark); box-shadow: 0 16px 40px rgba(26,26,26,0.08); border-left: 2px solid var(--c-brand-accent); z-index: 10; }
 
 .bg-watermark { position: absolute; top: 10%; right: -5%; font-family: var(--font-primary); font-size: 20vw; font-weight: 700; color: rgba(26,26,26,0.02); z-index: 1; pointer-events: none; user-select: none; white-space: nowrap; }
 

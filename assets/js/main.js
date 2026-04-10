@@ -59,3 +59,12 @@ if (slider && nextBtn && prevBtn) {
         }
     });
 }
+
+// PARALLAX WATERMARK
+const watermark = document.querySelector('.bg-watermark');
+if (watermark) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        watermark.style.transform = `translateY(${scrolled * 0.15}px)`;
+    });
+}
