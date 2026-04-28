@@ -380,26 +380,28 @@ body {
 .insta-price { font-family: var(--font-secondary); font-size: 0.875rem; color: var(--c-brand-accent); font-weight: 500; }
 
 .insta-action-btn {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: transparent;
+    background: var(--c-bg-secondary);
     border: 1px solid var(--c-border-light);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--c-brand-dark);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-decoration: none;
     transition: var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .insta-action-btn:hover {
-    background: var(--c-brand-dark);
-    color: var(--c-text-invert);
-    border-color: var(--c-brand-dark);
+    background: #25D366;
+    color: #FFF;
+    border-color: #25D366;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
 }
 
 .insta-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); padding: 8px 16px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; color: var(--c-brand-dark); z-index: 10; border-radius: 2px; }
@@ -418,6 +420,9 @@ body {
 
 @media(max-width: 600px) {
     .insta-slide { flex: 0 0 85vw; }
+    .insta-title { font-size: 1.05rem; }
+    .insta-info { gap: 8px; }
+    .insta-action-btn { width: 44px; height: 44px; font-size: 1.35rem; }
     .insta-card { aspect-ratio: 4/5; }
 }
 
